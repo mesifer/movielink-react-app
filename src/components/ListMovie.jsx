@@ -20,8 +20,8 @@ export default function ListMovie() {
     return (
         <div className=''>
             {/* RECOMENDED MOVIES */}
-            <div className='md:px-2 md:pt-20'>
-                <div className='md:px-8 text-gray-500 font-normal text-3xl'>Recomended</div>
+            <div className='md:px-2 pt-20'>
+                <div className='md:px-8 min-[360px]:px-4 text-gray-500 font-normal text-3xl'>Recomended</div>
                 <div className='Movie-container text-white'>
                     <div className='Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start '>
                         {movies.map((movie, index) => {
@@ -33,8 +33,8 @@ export default function ListMovie() {
             </div>
 
             {/* LATEST MOVIES */}
-            <div className='lg:px-2 md:pt-20'>
-                <div className='md:px-8 text-gray-500 font-normal text-3xl'>Latest Movies</div>
+            <div className='lg:px-2 pt-20'>
+                <div className='md:px-8 min-[360px]:px-4 text-gray-500 font-normal text-3xl'>Latest Movies</div>
                 <div className='Movie-container text-white'>
                     <div className='Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start gap-x-0'>
                         {movies.map((movie, index) => {
@@ -43,14 +43,14 @@ export default function ListMovie() {
                         })}
                     </div>
                     <div className='items-center flex justify-center'>
-                        <div className='bg-green-500 lg:w-[30vh] text-center py-3 cursor-pointer rounded-md'>More Movies</div>
+                        <div className='bg-green-500 lg:w-[30vh] min-[360px]:w-[20vh]  text-center py-3 cursor-pointer rounded-md'>More Movies</div>
                     </div>
                 </div>
             </div>
 
             {/* LATEST TV-SERIES */}
-            <div className='lg:px-2 md:py-20'>
-                <div className='md:px-8 text-gray-500 font-normal text-3xl'>Top TV-Series</div>
+            <div className='lg:px-2 py-20 '>
+                <div className='md:px-8 min-[360px]:px-4 text-gray-500 font-normal text-3xl'>Top TV-Series</div>
                 <div className='Movie-container text-white'>
                     <div className='Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start'>
                         {tvSeries.map((movie, index) => {
@@ -59,7 +59,7 @@ export default function ListMovie() {
                         })}
                     </div>
                     <div className='items-center flex justify-center'>
-                        <div className='bg-green-500 lg:w-[30vh] text-center py-3 cursor-pointer rounded-md'>More TV-Series</div>
+                        <div className='bg-green-500 lg:w-[30vh] min-[360px]:w-[20vh] text-center py-3 cursor-pointer rounded-md'>More TV-Series</div>
                     </div>
                 </div>
             </div>
