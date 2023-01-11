@@ -37,7 +37,7 @@ export default function Slider() {
     };
 
     return (
-        <div className="w-full h-screen">
+        <div className="w-full h-screen" id="home">
             <div style={{ backgroundImage: `url(${slide[currentIndex]})` }} className="md:bg-cover bg-center w-full bg-no-repeat h-full duration-500">
                 <div className="layer bg-[#0f172a98]  w-full h-full"></div>
                 <div className="md:px-20 px-12 md:justify-start justify-center w-full flex flex-col gap-y-2 absolute md:top-[32%] min-[1440px]:top-[35%] top-[15%] bottom-0">
