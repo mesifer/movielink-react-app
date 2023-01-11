@@ -7,7 +7,7 @@ export default function MovieWrapper({ movie, title, poster_path, vote_average, 
     if (title != null) {
         return (
             <div
-                className="flex  lg:w-[33vh] min-[375px]:w-[25vh] min-[360px]:w-[23vh] w-[30vh] md:gap-y-2 md:px-5 px-2 py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150"
+                className="flex lg:w-[33vh] md:w-[35vh] min-[375px]:w-[25vh] min-[360px]:w-[23vh] min-[410px]:w-[21vh] w-[30vh] md:gap-y-2 md:px-5 px-2 py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150"
                 onClick={() => selectedMovie(movie)}
             >
                 <div
