@@ -40,31 +40,32 @@ export default function Slider() {
         <div className="w-full h-screen">
             <div style={{ backgroundImage: `url(${slide[currentIndex]})` }} className="md:bg-cover bg-center w-full bg-no-repeat h-full duration-500">
                 <div className="layer bg-[#0f172a98]  w-full h-full"></div>
-                <div className="md:px-20 px-12 md:justify-start justify-center w-full flex flex-col gap-y-2 absolute md:top-[35%] top-[15%] bottom-0">
+                <div className="md:px-20 px-12 md:justify-start justify-center w-full flex flex-col gap-y-2 absolute md:top-[32%] min-[1440px]:top-[35%] top-[15%] bottom-0">
                     {popular.map((movie, movieIndex) => {
                         if (movieIndex === currentIndex && currentIndex < 10) {
                             return (
                                 <div className="">
-                                    <div className="md:px-20 px-1 md:justify-start justify-center md:items-start items-center flex flex-col gap-y-4">
-                                        <div className="text-white md:text-start text-center text-[36px] font-bold  ">{movie.title}</div>
-                                        <div className="flex md:gap-x-6 gap-x-2 md:gap-y-0 gap-y-1    md:flex-row flex-col">
+                                    <div className="md:px-4 lg:px-20 px-1 md:justify-start justify-center md:items-start items-center flex flex-col gap-y-4">
+                                        <div className="min-[1440px]:w-3/5 text-white md:text-start text-center md:text-[36px] text-[28px] font-bold  ">
+                                            {movie.title}
+                                        </div>
+                                        <div className="flex md:gap-x-6 gap-x-2 md:gap-y-0 gap-y-1 md:flex-row flex-col">
                                             <div className="bg-[#30bb26] md:mx-0 mx-4 md:p-0 px-3 py-2 text-center rounded-xl font-semibold md:px-5 md:mb-0 mb-4">
                                                 HD
                                             </div>
                                             <div className="flex gap-x-2 md:justify-start items-center justify-center flex-row text-white">
                                                 <Star size={20} color="#30bb26" />
-                                                <div className="" dangerouslySetInnerHTML={{ __html: movie.vote_average }}></div>
+                                                <div className="">{movie.vote_average}</div>
                                             </div>
-                                            <div className="flex gap-x-3 md:justify-start justify-center text-white">
+                                            <div className="flex gap-x-3 md:justify-start justify-center md:text-[16px] text-[14px] text-white">
                                                 <div className="">Drama</div>
                                                 <div className="">Action</div>
                                                 <div className="">Crime</div>
                                             </div>
                                         </div>
-                                        <div
-                                            className="md:flex hidden md:w-3/5 w-full text-justify text-white"
-                                            dangerouslySetInnerHTML={{ __html: movie.overview }}
-                                        ></div>
+                                        <div className="md:flex hidden md:w-5/5 min-[1440px]:w-3/5 min-[320px]:w-full text-justify text-white">
+                                            {movie.overview}
+                                        </div>
                                         <div className="border border-[#30bb26] text-[#30bb26] cursor-pointer w-[20vh] text-center py-2 rounded-xl">
                                             More Detail
                                         </div>

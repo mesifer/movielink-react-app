@@ -38,10 +38,10 @@ export default function ListMovie() {
     return (
         <div className="">
             {/* RECOMENDED MOVIES */}
-            <div className="md:px-2 pt-20">
+            <div className="px-2 pt-20">
                 <div className="md:px-8 min-[360px]:px-4 text-gray-500 font-normal text-3xl">Recomended</div>
                 <div className="Movie-container text-white">
-                    <div className="Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start ">
+                    <div className="Movie-wrapper flex flex-wrap gap-y-3">
                         {movies.map((movie, index) => {
                             return <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />;
                         })}
