@@ -25,7 +25,7 @@ export default function MovieWrapper({ movie, name, poster_path, vote_average, o
                         <div className="text-gray-500">{year[0]}</div>
                     </div>
                     <div className="border min-[320px]:py-[4px] px-2 py-1 items-center flex border-gray-500 rounded-md">
-                        <div className="text-gray-500 text-xs">Movie</div>
+                        <div className="text-gray-500 text-xs">TV</div>
                     </div>
                 </div>
             </div>
