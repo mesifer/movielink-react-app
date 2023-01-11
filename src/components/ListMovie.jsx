@@ -57,7 +57,7 @@ export default function ListMovie() {
                         {latestMovie.map((movie, index) => {
                             if (index < 12) return <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />;
                         })}
-                        {selectedMovie.title ? alert(selectedMovie.title) : null};
+                        {selectedMovie.title ? alert(selectedMovie.title) : null}
                     </div>
                     <div className="items-center flex justify-center">
                         <div className="bg-green-500 lg:w-[30vh] min-[360px]:w-[20vh]  text-center py-3 cursor-pointer rounded-md">More Movies</div>
