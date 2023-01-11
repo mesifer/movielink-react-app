@@ -15,7 +15,7 @@ export default function MovieWrapper({ movie, name, poster_path, vote_average, o
                     className="lg:bg-contain min-[320px]:bg-cover min-[1440px]:h-[37vh] lg:h-[58vh] md:h-[40vh] min-[425px]:h-[45vh] min-[320px]:h-[35vh] bg-no-repeat duration-500 rounded-md"
                 ></div>
                 <div className="truncate">{name}</div>
-                <div className="flex flex-row justify-between items-center md:text-[16px] min-[320px]:text-[10px]">
+                <div className="flex flex-row justify-between items-center md:text-[16px] min-[320px]:text-[12px]">
                     <div className="flex justify-center items-center gap-x-1">
                         <div className="flex flex-row justify-center items-center gap-x-1 ">
                             <Star size={16} color="#30bb26" />
