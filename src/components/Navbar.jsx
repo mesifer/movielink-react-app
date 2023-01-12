@@ -18,8 +18,8 @@ export default function Navbar() {
         <nav
             className={
                 color
-                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-12  py-4 text-white w-full'
-                    : 'duration-300 Navbar fixed lg:px-12 z-50 py-8 text-white w-full'
+                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-12 px-4  py-4 text-white w-full'
+                    : 'duration-300 Navbar fixed lg:px-12 px-4 z-50 py-8 text-white w-full'
             }
         >
             <div className="flex md:gap-x-20 justify-between lg:px-12 min-[320px]:px-4">
@@ -40,30 +40,30 @@ export default function Navbar() {
                         <div className="min-[320px]:bg-slate-900/95 min-[320px]:flex min-[320px]:flex-col lg:flex-row lg:bg-transparent min-[320px]:py-4 min-[320px]:px-6   min-[320px]:rounded-xl gap-x-12">
                             <Link
                                 to="/"
-                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px]"
+                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px] lg:border-none"
                             >
                                 Home
                             </Link>
                             <Link
                                 to="/genre"
                                 onMouseEnter={() => alert('test')}
-                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px]"
+                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px] lg:border-none"
                             >
                                 Genre
                             </Link>
                             <Link
                                 to="/movies"
-                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px]"
+                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px] lg:border-none"
                             >
                                 Movies
                             </Link>
                             <Link
                                 to="/tvseries"
-                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px]"
+                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px] lg:border-none"
                             >
                                 TV-Series
                             </Link>
-                            <div className="bg-green-700 mt-6 flex flex-row justify-center items-center text-sm text-[#ffffffee] rounded-lg px-[4vh] py-[1vh]">
+                            <div className="bg-green-700 lg:hidden mt-6 flex flex-row justify-center items-center text-sm text-[#ffffffee] rounded-lg px-[4vh] py-[1vh]">
                                 <a className="" href="https://github.com/rosfandy/movielink-react-app">
                                     <button className="flex gap-x-1 font-semibold items-center">
                                         <BrandGithub size={24} color="#ffffffee"></BrandGithub>
