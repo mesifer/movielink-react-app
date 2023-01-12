@@ -57,9 +57,20 @@ export default function Navbar() {
                             >
                                 Movies
                             </Link>
-                            <Link to="/tvseries" className="hover:text-white/90 min-[320px]:text-[16px]  min-[320px]:py-4 lg:text-[14px]">
+                            <Link
+                                to="/tvseries"
+                                className="hover:text-white/90 min-[320px]:text-[16px] min-[320px]:border-b-[1px] min-[320px]:border-white/5 min-[320px]:py-4 lg:text-[14px]"
+                            >
                                 TV-Series
                             </Link>
+                            <div className="bg-green-700 mt-6 flex flex-row justify-center items-center text-sm text-[#ffffffee] rounded-lg px-[4vh] py-[1vh]">
+                                <a className="" href="https://github.com/rosfandy/movielink-react-app">
+                                    <button className="flex gap-x-1 font-semibold items-center">
+                                        <BrandGithub size={24} color="#ffffffee"></BrandGithub>
+                                        Rosfandy
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div className="Searchbar flex items-center md:justify-between md:gap-x-2 rounded-xl md:py-2 md:px-8 md:bg-[#ffffff13] min-[320px]:pl-[60%]">
