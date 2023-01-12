@@ -37,17 +37,21 @@ export default function Navbar() {
                                 : 'Navigasi text-[#ffffff8C] font-normal lg:static min-[320px]:flex-col min-[320px]:w-[100%] lg:w-[40%] min-[320px]:left-0 min-[320px]:px-4 lg:flex hidden min-[320px]:absolute min-[320px]:top-[100%] gap-x-8 md:pl-[60%] lg:pl-0'
                         }
                     >
-                        <div className="min-[320px]:bg-[#0A1220] min-[320px]:flex min-[320px]:flex-col lg:flex-row lg:bg-transparent min-[320px]:py-6 min-[320px]:px-8 min-[320px]:gap-y-4 min-[320px]:rounded-b-xl gap-x-12">
-                            <Link to="/" className="hover:text-white/90 text-[14px]">
+                        <div className="min-[320px]:bg-[#0A1220] min-[320px]:flex min-[320px]:flex-col lg:flex-row lg:bg-transparent min-[320px]:py-6 min-[320px]:px-8 min-[320px]:gap-y-6 min-[320px]:rounded-b-xl gap-x-12">
+                            <Link to="/" className="hover:text-white/90 min-[320px]:text-[16px] lg:text-[14px]">
                                 Home
                             </Link>
-                            <Link to="/genre" onMouseEnter={() => alert('test')} className="hover:text-white/90 text-[14px]">
+                            <Link
+                                to="/genre"
+                                onMouseEnter={() => alert('test')}
+                                className="hover:text-white/90 min-[320px]:text-[16px] lg:text-[14px]"
+                            >
                                 Genre
                             </Link>
-                            <Link to="/movies" className="hover:text-white/90 text-[14px]">
+                            <Link to="/movies" className="hover:text-white/90 min-[320px]:text-[16px] lg:text-[14px]">
                                 Movies
                             </Link>
-                            <Link to="/tvseries" className="hover:text-white/90 text-[14px]">
+                            <Link to="/tvseries" className="hover:text-white/90 min-[320px]:text-[16px] lg:text-[14px]">
                                 TV-Series
                             </Link>
                         </div>
