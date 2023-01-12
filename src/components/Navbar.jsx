@@ -18,7 +18,7 @@ export default function Navbar() {
         <nav
             className={
                 color
-                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-12 px-4  py-4 text-white w-full'
+                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-12 px-4 lg:py-2 min-[320px]:py-6 text-white w-full'
                     : 'duration-300 Navbar fixed lg:px-12 px-4 z-50 py-8 text-white w-full'
             }
         >
