@@ -2,12 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import dotenv from 'dotenv';
-// dotenv.config();
+import { BrowserRouter, Route, createBrowserRouter, RouterProvider } from 'react-router-dom';
+import MovieDetail from './components/MovieDetail';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <BrowserRouter>
-        <App />
-    </BrowserRouter>
-);
+const router = createBrowserRouter([
+    {
+        path: '/',
+        element: <App />,
+    },
+    {
+        path: '/movie/:id',
+        element: <MovieDetail />,
+    },
+]);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<RouterProvider router={router} />);

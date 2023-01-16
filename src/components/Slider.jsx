@@ -11,7 +11,7 @@ export default function Slider() {
     const [popular, setPopular] = useState([]);
     useEffect(() => {
         const fetchMovies = async () => {
-            const dataPopular = await tmdb.get('movie/popular').then();
+            const dataPopular = await tmdb.get('trending/movie/week').then();
             popular.map((el) => {
                 const img = `${imgURL}${el.backdrop_path}`;
                 imgPopular.push(img);

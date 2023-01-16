@@ -6,7 +6,7 @@ export default function Navbar() {
     const [isSearch, setIsSearch] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
     const changeColor = () => {
-        window.scrollY >= 90 ? setColor(true) : setColor(false);
+        window.scrollY >= 50 ? setColor(true) : setColor(false);
     };
 
     const handleToggle = () => {
@@ -38,7 +38,7 @@ export default function Navbar() {
                         <div
                             className={
                                 isSearch
-                                    ? 'mb-4 flex justify-between flex-row md:hidden  bg-white/50 w-full rounded-md'
+                                    ? 'mb-4 flex justify-between flex-row md        :hidden  bg-white/50 w-full rounded-md'
                                     : 'mb-4 hidden justify-between flex-row  bg-white/50 w-full rounded-md'
                             }
                         >

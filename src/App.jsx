@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import reactLogo from './assets/react.svg';
 import Footer from './components/Footer';
 import ListMovie from './components/ListMovie';
+import MovieDetail from './components/MovieDetail';
 import MovieWrapper from './components/MovieWrapper';
 import Navbar from './components/Navbar';
 import Slider from './components/Slider';
-
 function App() {
     return (
         <div className="App">
