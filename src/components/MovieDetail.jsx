@@ -95,7 +95,7 @@ export default function MovieDetail() {
                                     <div className="">Genre</div>
                                     <div className="">:</div>
                                 </div>
-                                <div className="w-2/8">
+                                <div className="w-2/3">
                                     {genre.map((gen, index) => {
                                         return index === genre.length - 1 ? (
                                             <span className="text-white/80 hover:text-green-400 cursor-pointer">{gen.name}</span>
