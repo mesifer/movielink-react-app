@@ -22,11 +22,11 @@ export default function Navbar() {
         <nav
             className={
                 color
-                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-12 px-4 lg:py-2 min-[320px]:py-6 text-white w-full'
-                    : 'duration-300 Navbar fixed lg:px-12 px-4 z-50 py-8 text-white w-full'
+                    ? 'Navbar duration-300 z-50 fixed bg-slate-900 lg:px-4 px-4 lg:py-2 min-[320px]:py-6 text-white w-full'
+                    : 'duration-300 Navbar fixed lg:px-4 px-4 z-50 py-8 text-white w-full'
             }
         >
-            <div className="flex md:gap-x-20 justify-between lg:px-12 min-[320px]:px-4">
+            <div className="flex md:gap-x-20 min-[1440px]:gap-x-32 lg:gap-x-12  justify-between lg:px-12 min-[320px]:px-4">
                 <div className="md:flex justify-center items-center">
                     <Link className="text-2xl font-medium">Movielink</Link>
                 </div>
@@ -34,11 +34,11 @@ export default function Navbar() {
                     <div className="Menubar lg:hidden">
                         <Menu2 onClick={handleToggle} size={32} color="white"></Menu2>
                     </div>
-                    <div className="Navigasi text-[#ffffff8C] font-normal lg:static min-[320px]:flex-col min-[320px]:w-[100%] lg:w-[40%] min-[320px]:left-0 min-[320px]:px-4 lg:flex  min-[320px]:absolute min-[320px]:top-[120%] gap-x-8 md:pl-[60%] lg:pl-0">
+                    <div className="Navigasi text-[#ffffff8C] font-normal lg:static min-[320px]:flex-col min-[320px]:w-[100%] lg:w-[40%] min-[320px]:left-0 min-[320px]:px-4 lg:flex  min-[320px]:absolute min-[320px]:top-[120%] md:pl-[60%] lg:pl-0">
                         <div
                             className={
                                 isSearch
-                                    ? 'mb-4 flex justify-between flex-row md        :hidden  bg-white/50 w-full rounded-md'
+                                    ? 'mb-4 flex justify-between flex-row md:hidden  bg-white/50 w-full rounded-md'
                                     : 'mb-4 hidden justify-between flex-row  bg-white/50 w-full rounded-md'
                             }
                         >
@@ -57,7 +57,7 @@ export default function Navbar() {
                             className={
                                 isMenu
                                     ? 'min-[320px]:bg-slate-900/95 min-[320px]:flex min-[320px]:flex-col lg:flex-row lg:bg-transparent min-[320px]:py-4 min-[320px]:px-6 min-[320px]:rounded-xl gap-x-12'
-                                    : 'hidden lg:flex lg:flex-row gap-x-12'
+                                    : 'hidden lg:flex lg:flex-row min-[1400px]:gap-x-12 lg:gap-x-8'
                             }
                         >
                             <Link
