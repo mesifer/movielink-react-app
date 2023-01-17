@@ -52,7 +52,7 @@ export default function MovieDetail() {
                             className="bg-contain bg-cover bg-center min-[1400px]:h-[50vh] lg:h-[60vh] md:h-[45vh] bg-no-repeat duration-500 rounded-md"
                         ></div>
                     </div>
-                    <div className="min-[1400px]:w-[50%] flex flex-col gap-y-4 lg:text-base w-full text-[12px]">
+                    <div className="min-[1400px]:w-[50%] flex flex-col gap-y-4 lg:text-base w-full text-[16px]">
                         <div className="text-white font-bold text-3xl">{movie.title}</div>
                         <div className="text-white/50 font-light">{movie.overview}</div>
                         <div className="text-white/50 font-light flex flex-col gap-y-2">
