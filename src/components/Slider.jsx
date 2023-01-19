@@ -20,7 +20,7 @@ export default function Slider() {
             setPopular(dataPopular.data.results);
         };
         fetchMovies();
-    });
+    }, [slide]);
 
     const prevSlide = () => {
         const isFirstSlide = currentIndex === 0;

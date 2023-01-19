@@ -26,6 +26,7 @@ export default function ListMovie() {
         };
         fetchMovies();
     }, []);
+    console.log(movies);
 
     return (
         <div className="">
