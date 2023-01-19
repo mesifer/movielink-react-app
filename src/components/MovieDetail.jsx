@@ -62,17 +62,19 @@ export default function MovieDetail() {
                                     <div className="">:</div>
                                 </div>
                                 &ensp;
-                                {country.map((item, index) => {
-                                    return index === country.length - 1 ? (
-                                        <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
-                                            {item.name}
-                                        </span>
-                                    ) : (
-                                        <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
-                                            {item.name},&ensp;
-                                        </span>
-                                    );
-                                })}
+                                <div className="w-2/3">
+                                    {country.map((item, index) => {
+                                        return index === country.length - 1 ? (
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name}
+                                            </span>
+                                        ) : (
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name},&ensp;
+                                            </span>
+                                        );
+                                    })}
+                                </div>
                             </div>
                             <div className="flex">
                                 <div className="flex justify-between min-[1400px]:w-[15%]  md:w-[20%] w-[30%] ">
