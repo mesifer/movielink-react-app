@@ -18,7 +18,7 @@ export default function MovieDetail() {
     useEffect(() => {
         const getVideos = async () => {
             const { data } = await getMovies.get(`/movie/${id}`);
-            setTrailer(data.videos.results.find((vid) => vid.name.includes('Official Trailer') || vid.name.includes('official trailer')));
+            setTrailer(data.videos.results.find((vid) => vid.name.includes('Trailer') || vid.name.includes('trailer')));
             setMovie(data);
             setGenre(data.genres);
             setCountry(data.production_countries);
