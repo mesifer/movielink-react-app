@@ -62,8 +62,16 @@ export default function MovieDetail() {
                                     <div className="">:</div>
                                 </div>
                                 &ensp;
-                                {country.map((item) => {
-                                    return <div className="text-white/80 hover:text-green-400 cursor-pointer">{item.name}</div>;
+                                {country.map((item, index) => {
+                                    return index === country.length - 1 ? (
+                                        <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                            {item.name}
+                                        </span>
+                                    ) : (
+                                        <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                            {item.name},&ensp;
+                                        </span>
+                                    );
                                 })}
                             </div>
                             <div className="flex">
@@ -75,9 +83,13 @@ export default function MovieDetail() {
                                 <div className="w-2/3">
                                     {company.map((item, index) => {
                                         return index === company.length - 1 ? (
-                                            <span className="text-white/80 hover:text-green-400 cursor-pointer">{item.name}</span>
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name}
+                                            </span>
                                         ) : (
-                                            <span className="text-white/80 hover:text-green-400 cursor-pointer">{item.name}, </span>
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name},&ensp;
+                                            </span>
                                         );
                                     })}
                                 </div>
@@ -98,9 +110,13 @@ export default function MovieDetail() {
                                 <div className="w-2/3">
                                     {genre.map((gen, index) => {
                                         return index === genre.length - 1 ? (
-                                            <span className="text-white/80 hover:text-green-400 cursor-pointer">{gen.name}</span>
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {gen.name}
+                                            </span>
                                         ) : (
-                                            <span className="text-white/80 hover:text-green-400 cursor-pointer">{gen.name}, </span>
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {gen.name},&ensp;
+                                            </span>
                                         );
                                     })}
                                 </div>
