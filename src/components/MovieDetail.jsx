@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import YouTube from 'react-youtube';
 import getMovies from './getMovies';
 import VideoIframe from './iFrame';
@@ -14,8 +14,10 @@ export default function MovieDetail() {
     const [genre, setGenre] = useState([]);
     const [country, setCountry] = useState([]);
     const [company, setCompany] = useState([]);
+    const { pathname } = useLocation();
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         const getVideos = async () => {
             const { data } = await getMovies.get(`/movie/${id}`);
             setTrailer(data.videos.results.find((vid) => vid.name.includes('Trailer') || vid.name.includes('trailer')));
@@ -25,10 +27,8 @@ export default function MovieDetail() {
             setCompany(data.production_companies);
         };
         getVideos();
-    }, []);
-    country.map((gen) => {
-        console.log(gen.name);
-    });
+    }, [pathname]);
+
     return (
         <div className="movie-detail bg-slate-900">
             <Navbar />
