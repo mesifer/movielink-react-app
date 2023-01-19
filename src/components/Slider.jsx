@@ -44,7 +44,7 @@ export default function Slider() {
                     {popular.map((movie, movieIndex) => {
                         if (movieIndex === currentIndex && currentIndex < 10) {
                             return (
-                                <div className="">
+                                <div className="" key={index}>
                                     <div className="md:px-4 lg:px-20 px-1 md:justify-start justify-center md:items-start items-center flex flex-col gap-y-4">
                                         <div className="min-[1440px]:w-3/5 text-white md:text-start text-center md:text-[36px] text-[28px] font-bold  ">
                                             {movie.title}

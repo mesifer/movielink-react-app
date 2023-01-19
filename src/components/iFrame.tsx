@@ -8,7 +8,7 @@ interface IProps {
 
 const VideoIframe: React.FC<IProps> = (props) => {
     const { videoId, autoPlay, title } = props;
-    const videoURL = `https://www.youtube.com/embed/${videoId}${autoPlay ? '? autoplay=1' : ''}`;
+    const videoURL = `https://www.youtube-nocookie.com/embed/${videoId}${autoPlay ? '? autoplay=1' : ''}`;
     const iframeRef = useRef<HTMLIFrameElement>(null);
     const defaultHeight = 495;
     const [videoHeight, setVideoHeight] = useState<number>(iframeRef.current ? iframeRef.current.offsetWidth * 0.5625 : defaultHeight);
