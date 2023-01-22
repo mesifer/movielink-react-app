@@ -1,6 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 import { Star } from 'tabler-icons-react';
 
 export default function MovieWrapper({ movie, name, poster_path, vote_average, overview, genre_ids, first_air_date, media_type, selectedMovie }) {
+    let navigate = useNavigate();
+    const routeChange = (id) => {
+        let path = `/tv/${id}`;
+        navigate(path);
+    };
+
     const imgURL = `https://image.tmdb.org/t/p/w500${poster_path}`;
     let year = '';
     if (first_air_date) year = first_air_date.split('-');
@@ -8,7 +15,10 @@ export default function MovieWrapper({ movie, name, poster_path, vote_average, o
         return (
             <div
                 className="flex min-[1440px]:w-[12.5%] lg:w-[16.6%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150"
-                onClick={() => selectedMovie(movie)}
+                onClick={() => {
+                    selectedMovie(movie);
+                    routeChange(movie.id);
+                }}
             >
                 <div
                     style={{ backgroundImage: `url(${imgURL})` }}

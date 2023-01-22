@@ -7,7 +7,7 @@ import VideoIframe from './iFrame';
 import Navbar from './Navbar';
 const imgURL = 'https://image.tmdb.org/t/p/w1280';
 
-export default function MovieDetail() {
+export default function SeriesDetail() {
     const { id } = useParams();
     const [trailer, setTrailer] = useState([]);
     const [movie, setMovie] = useState([]);
@@ -19,15 +19,20 @@ export default function MovieDetail() {
     useEffect(() => {
         window.scrollTo(0, 0);
         const getVideos = async () => {
-            const { data } = await getTrailer.get(`/movie/${id}`);
-            setTrailer(data.videos.results.find((vid) => vid.name.includes('Trailer') || vid.name.includes('trailer')));
+            const { data } = await getTrailer.get(`/tv/${id}`);
             setMovie(data);
+            let find = data.videos.results.find((vid) => vid.name.includes('Teaser') || vid.name.includes('30s') || vid.name.includes('Anime'));
+            if (find == undefined) {
+                find = data.videos.results.find((vid) => vid.name.includes('Trailer'));
+            }
+            setTrailer(find);
             setGenre(data.genres);
-            setCountry(data.production_countries);
             setCompany(data.production_companies);
+            setCountry(data.production_countries);
         };
         getVideos();
     }, [pathname]);
+    console.log('trailer: ', trailer);
 
     return (
         <div className="movie-detail bg-slate-900">
@@ -53,7 +58,7 @@ export default function MovieDetail() {
                         ></div>
                     </div>
                     <div className="min-[1400px]:w-[50%] flex flex-col gap-y-4 lg:text-base w-full text-[16px]">
-                        <div className="text-white font-bold text-3xl">{movie.title}</div>
+                        <div className="text-white font-bold text-3xl">{movie.name}</div>
                         <div className="text-white/50 font-light">{movie.overview}</div>
                         <div className="text-white/50 font-light flex flex-col gap-y-2">
                             <div className=" flex">
@@ -102,7 +107,7 @@ export default function MovieDetail() {
                                     <div className="">:</div>
                                 </div>
                                 &ensp;
-                                {movie.release_date}
+                                {movie.first_air_date}
                             </div>
                             <div className="flex  gap-x-2 ">
                                 <div className="flex justify-between min-[1400px]:w-[15%]  md:w-[20%] w-[30%]">
