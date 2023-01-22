@@ -38,7 +38,7 @@ export default function ReviewMovies({ page, results, total_results, created_at 
 
     console.log('rekom: ', recommendations);
     return results != undefined ? (
-        <div className="lg:px-12 flex gap-x-24  py-12">
+        <div className="lg:px-12 flex lg:flex-row flex-col gap-x-24  py-12">
             <div className="min-[1400px]:w-[50%] lg:w-[80%] lg:px-0 px-4">
                 <div className="text-gray-500 text-3xl">Reviews {`(${total_results})`}</div>
                 {total_results != 0 ? (
@@ -96,7 +96,7 @@ export default function ReviewMovies({ page, results, total_results, created_at 
                     <div className="text-white/50">No Review</div>
                 )}
             </div>
-            <div className="lg:flex lg:flex-col hidden min-[1400px]:w-[50%] lg:w-[40%]">
+            <div className="lg:flex lg:flex-col min-[1400px]:w-[50%] lg:w-[40%]">
                 <div className=" text-gray-500 text-3xl">Related Movie</div>
                 <div className="flex flex-wrap">
                     {recommendations.length != 0 ? (
@@ -112,7 +112,6 @@ export default function ReviewMovies({ page, results, total_results, created_at 
                     )}
                 </div>
             </div>
-            {/* {selectedMovie ? <div className="">{selectedMovie}</div> : ''} */}
         </div>
     ) : null;
 }
