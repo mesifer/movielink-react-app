@@ -1,20 +1,18 @@
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { Star } from 'tabler-icons-react';
-import MovieDetail from './MovieDetail';
 export default function MovieWrapper({ movie, title, poster_path, vote_average, overview, genre_ids, release_date, media_type, selectedMovie }) {
     let navigate = useNavigate();
     const routeChange = (id) => {
         let path = `/movie/${id}`;
         navigate(path);
     };
-
     const imgURL = `https://image.tmdb.org/t/p/w500${poster_path}`;
     let year = '';
     if (release_date) year = release_date.split('-');
     if (title != null) {
         return (
             <div
-                className="flex min-[1440px]:w-[12.5%] lg:w-[16.6%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150"
+                className=""
                 onClick={() => {
                     selectedMovie(movie);
                     routeChange(movie.id);
@@ -29,7 +27,7 @@ export default function MovieWrapper({ movie, title, poster_path, vote_average, 
                     <div className="flex justify-center items-center gap-x-1">
                         <div className="flex flex-row justify-center items-center gap-x-1 ">
                             <Star size={16} color="#30bb26" />
-                            <div className="text-gray-500" dangerouslySetInnerHTML={{ __html: vote_average }}></div>
+                            <div className="text-gray-500">{vote_average}</div>
                         </div>
                         <div className="text-gray-500">•</div>
                         <div className="text-gray-500">{year[0]}</div>

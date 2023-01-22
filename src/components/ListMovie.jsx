@@ -1,17 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import MovieWrapper from './MovieWrapper';
-import SeriesWrapper from './SeriesWrapper';
+import { useLocation } from 'react-router-dom';
+import MovieWrapper from './movies/MovieWrapper';
+import SeriesWrapper from './series/SeriesWrapper';
 import tmdb from './tmdb';
-import YouTube from 'react-youtube';
-import MovieDetail from './MovieDetail';
-
 export default function ListMovie() {
+    const { pathname } = useLocation();
+
     const [movies, setMovies] = useState([]);
     const [latestMovie, setLatestMovies] = useState([]);
     const [tvSeries, setTvSeries] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
-    const [selectedSeries, setSelectedSeries] = useState({});
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -25,8 +23,8 @@ export default function ListMovie() {
             setTvSeries(dataTv.data.results);
         };
         fetchMovies();
-    }, []);
-    console.log(movies);
+    }, [pathname]);
+    console.log('path: ', pathname);
 
     return (
         <div className="">
@@ -42,7 +40,11 @@ export default function ListMovie() {
                 <div className="Movie-container text-white">
                     <div className="Movie-wrapper flex flex-wrap gap-y-3">
                         {movies.map((movie, index) => {
-                            return <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />;
+                            return (
+                                <div className="flex min-[1440px]:w-[12.5%] lg:w-[16.6%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150">
+                                    <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />
+                                </div>
+                            );
                         })}
                     </div>
                 </div>
@@ -54,7 +56,12 @@ export default function ListMovie() {
                 <div className="Movie-container text-white">
                     <div className="Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start gap-x-0">
                         {latestMovie.map((movie, index) => {
-                            if (index < 12) return <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />;
+                            if (index < 12)
+                                return (
+                                    <div className="flex min-[1440px]:w-[12.5%] lg:w-[16.6%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150">
+                                        <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />
+                                    </div>
+                                );
                         })}
                     </div>
                     <div className="items-center flex justify-center">

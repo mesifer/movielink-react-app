@@ -1,10 +1,8 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import YouTube from 'react-youtube';
-import getTrailer from './getTrailer';
-import VideoIframe from './iFrame';
-import Navbar from './Navbar';
+import getTrailer from '../tmdb';
+import VideoIframe from '../iFrame';
+import Navbar from '../Navbar';
 const imgURL = 'https://image.tmdb.org/t/p/w1280';
 
 export default function SeriesDetail() {
@@ -32,7 +30,6 @@ export default function SeriesDetail() {
         };
         getVideos();
     }, [pathname]);
-    console.log('trailer: ', trailer);
 
     return (
         <div className="movie-detail bg-slate-900">

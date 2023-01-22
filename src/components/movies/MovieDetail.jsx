@@ -1,34 +1,45 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
-import YouTube from 'react-youtube';
-import getTrailer from './getTrailer';
-import VideoIframe from './iFrame';
-import Navbar from './Navbar';
+import getTrailer from '../tmdb';
+import VideoIframe from '../iFrame';
+import Navbar from '../Navbar';
+import ReviewMovies from './ReviewMovies';
+import Footer from '../Footer';
 const imgURL = 'https://image.tmdb.org/t/p/w1280';
 
 export default function MovieDetail() {
     const { id } = useParams();
+    const { pathname } = useLocation();
+
     const [trailer, setTrailer] = useState([]);
     const [movie, setMovie] = useState([]);
     const [genre, setGenre] = useState([]);
+    const [credit, setCredit] = useState([]);
+    const [cast, setCast] = useState([]);
     const [country, setCountry] = useState([]);
     const [company, setCompany] = useState([]);
-    const { pathname } = useLocation();
+    const [review, setReview] = useState([]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
         const getVideos = async () => {
             const { data } = await getTrailer.get(`/movie/${id}`);
+            const credits = await getTrailer.get(`/movie/${id}/credits`);
+            const reviews = await getTrailer.get(`/movie/${id}/reviews`);
+            console.log('data: ', data);
             setTrailer(data.videos.results.find((vid) => vid.name.includes('Trailer') || vid.name.includes('trailer')));
             setMovie(data);
             setGenre(data.genres);
             setCountry(data.production_countries);
             setCompany(data.production_companies);
+            setCast(credits.data.cast);
+            setCredit(credit.data);
+            setReview(reviews.data);
         };
         getVideos();
     }, [pathname]);
 
+    console.log('path: ', pathname);
     return (
         <div className="movie-detail bg-slate-900">
             <Navbar />
@@ -40,7 +51,13 @@ export default function MovieDetail() {
                     >
                         <div className="layer bg-[#0f172a98] w-full h-full flex justify-center items-center lg:pt-20">
                             <div className="w-[95%]">
-                                <VideoIframe videoId={trailer.key} videoTitle={trailer.name} />
+                                {trailer ? (
+                                    <VideoIframe videoId={trailer.key} videoTitle={trailer.name} />
+                                ) : (
+                                    <div className="w-full lg:h-[80vh] md:h-[60vh] h-[50vh] bg-black/50 text-white/50 text-center flex justify-center items-center text-3xl">
+                                        Video Not Found
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -54,7 +71,7 @@ export default function MovieDetail() {
                     </div>
                     <div className="min-[1400px]:w-[50%] flex flex-col gap-y-4 lg:text-base w-full text-[16px]">
                         <div className="text-white font-bold text-3xl">{movie.title}</div>
-                        <div className="text-white/50 font-light">{movie.overview}</div>
+                        <div className="text-white/50 font-light text-justify">{movie.overview}</div>
                         <div className="text-white/50 font-light flex flex-col gap-y-2">
                             <div className=" flex">
                                 <div className="flex justify-between min-[1400px]:w-[15%]  md:w-[20%] w-[30%] ">
@@ -85,6 +102,26 @@ export default function MovieDetail() {
                                 <div className="w-2/3">
                                     {company.map((item, index) => {
                                         return index === company.length - 1 ? (
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name}
+                                            </span>
+                                        ) : (
+                                            <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
+                                                {item.name},&ensp;
+                                            </span>
+                                        );
+                                    })}
+                                </div>
+                            </div>
+                            <div className="flex">
+                                <div className="flex justify-between min-[1400px]:w-[15%]  md:w-[20%] w-[30%] ">
+                                    <div className="">Cast</div>
+                                    <div className="">:</div>
+                                </div>
+                                &ensp;
+                                <div className="w-2/3">
+                                    {cast.map((item, index) => {
+                                        return index > 4 ? null : index === 4 ? (
                                             <span key={index} className="text-white/80 hover:text-green-400 cursor-pointer">
                                                 {item.name}
                                             </span>
@@ -127,6 +164,8 @@ export default function MovieDetail() {
                     </div>
                 </div>
             </div>
+            <ReviewMovies {...review} />
+            <Footer />
         </div>
     );
 }
