@@ -96,8 +96,8 @@ export default function ReviewMovies({ page, results, total_results, created_at 
                     <div className="text-white/50">No Review</div>
                 )}
             </div>
-            <div className="lg:flex lg:flex-col min-[1400px]:w-[50%] lg:w-[40%]">
-                <div className=" text-gray-500 text-3xl px-4 ">Related Movie</div>
+            <div className="lg:flex lg:flex-col min-[1400px]:w-[50%] px-4 lg:w-[40%]">
+                <div className=" text-gray-500 text-3xl  ">Related Movie</div>
                 <div className="flex flex-wrap">
                     {recommendations.length != 0 ? (
                         recommendations.map((movie, index) => {
