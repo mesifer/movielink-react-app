@@ -9,7 +9,6 @@ export default function ReviewMovies({ page, results, total_results, created_at 
     const { pathname } = useLocation();
     console.log('ID: ', id);
     const [img, setImg] = useState([]);
-    const [isReadMore, setIsReadMore] = useState(false);
     const [recommendations, setRecommendations] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
     const [toggle, setToggle] = useState({});
@@ -22,7 +21,6 @@ export default function ReviewMovies({ page, results, total_results, created_at 
     useEffect(() => {
         const fetchData = async () => {
             const recom = await getRecommendations.get(`/movie/${id}/recommendations`);
-            console.log('res: ', recom.data.results);
             setRecommendations(recom.data.results);
         };
         if (results != undefined) {
@@ -33,10 +31,8 @@ export default function ReviewMovies({ page, results, total_results, created_at 
             });
         }
         fetchData();
-    }, [results, pathname]);
-    console.log('selectedMovie: ', selectedMovie);
+    }, [pathname]);
 
-    console.log('rekom: ', recommendations);
     return results != undefined ? (
         <div className="lg:px-12 flex lg:flex-row flex-col lg:gap-y-0 gap-y-8 gap-x-24  py-12">
             <div className="min-[1400px]:w-[50%] lg:w-[80%] lg:px-0 px-4">
