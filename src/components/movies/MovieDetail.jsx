@@ -20,6 +20,7 @@ export default function MovieDetail() {
     const [company, setCompany] = useState([]);
     const [review, setReview] = useState([]);
     const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
         setLoading(true);
@@ -43,6 +44,7 @@ export default function MovieDetail() {
         };
         getVideos();
     }, [pathname]);
+
     return (
         <div className="movie-detail bg-slate-900">
             <Navbar />

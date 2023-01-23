@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
-import MovieWrapper from './MovieWrapper';
+import SeriesWrapper from './SeriesWrapper';
 import getRecommendations from '../tmdb';
 import { useLocation, useParams } from 'react-router-dom';
-export default function ReviewMovies({ page, results, total_results, created_at }) {
+export default function ReviewSeries({ page, results, total_results, created_at }) {
     const { id } = useParams();
     const { pathname } = useLocation();
 
@@ -12,7 +12,6 @@ export default function ReviewMovies({ page, results, total_results, created_at 
     const [recommendations, setRecommendations] = useState([]);
     const [selectedMovie, setSelectedMovie] = useState({});
     const [toggle, setToggle] = useState({});
-
     const toggleReadMore = (index) => {
         setToggle({
             ...toggle,
@@ -33,7 +32,7 @@ export default function ReviewMovies({ page, results, total_results, created_at 
 
     useEffect(() => {
         const fetchData = async () => {
-            const recom = await getRecommendations.get(`/movie/${id}/recommendations`);
+            const recom = await getRecommendations.get(`/tv/${id}/recommendations`);
             setRecommendations(recom.data.results);
         };
         if (results != undefined) {
@@ -44,8 +43,8 @@ export default function ReviewMovies({ page, results, total_results, created_at 
             });
         }
         fetchData();
-    }, []);
-
+    }, [pathname]);
+    console.log('rev: ', results);
     return results != undefined ? (
         <div className="lg:px-12 flex lg:flex-row flex-col lg:gap-y-0 gap-y-8 gap-x-24  py-12">
             <div className="min-[1400px]:w-[50%] lg:w-[80%] lg:px-0 px-4">
@@ -151,7 +150,7 @@ export default function ReviewMovies({ page, results, total_results, created_at 
                         recommendations.map((movie, index) => {
                             return index < 12 ? (
                                 <div className="flex min-[1440px]:w-[33%] text-white lg:w-[100%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150">
-                                    <MovieWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />
+                                    <SeriesWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />
                                 </div>
                             ) : null;
                         })

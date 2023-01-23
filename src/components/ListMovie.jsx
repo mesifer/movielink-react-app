@@ -78,7 +78,11 @@ export default function ListMovie() {
                 <div className="Movie-container text-white">
                     <div className="Movie-wrapper flex flex-wrap gap-y-3 justify-center lg:justify-start">
                         {tvSeries.map((movie, index) => {
-                            return <SeriesWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />;
+                            return (
+                                <div className="flex min-[1440px]:w-[12.5%] lg:w-[16.6%] md:w-[25%] min-[320px]:w-[50%] px-[5px] py-8 flex-col cursor-pointer hover:scale-[1.02] duration-150">
+                                    <SeriesWrapper key={index} movie={movie} {...movie} selectedMovie={setSelectedMovie} />
+                                </div>
+                            );
                         })}
                         {console.log(selectedMovie)}
                         {selectedMovie.name ? alert(selectedMovie.name) : null}
