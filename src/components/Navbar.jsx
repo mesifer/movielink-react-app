@@ -89,8 +89,8 @@ export default function Navbar() {
                         <div
                             className={
                                 isSearch
-                                    ? 'mb-4 flex justify-between flex-row md:hidden  bg-white/100 w-full rounded-md'
-                                    : 'mb-4 hidden justify-between flex-row  bg-white/100 w-full rounded-md'
+                                    ? 'mb-4 flex justify-between flex-row md:hidden  bg-white/80 w-full rounded-md'
+                                    : 'mb-4 hidden justify-between flex-row  bg-white/80 w-full rounded-md'
                             }
                         >
                             <div className="">
