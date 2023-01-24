@@ -12,8 +12,10 @@
     "axios": "^1.2.2",
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
+    "react-datalist-input": "^3.2.1",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.1",
+    "react-spinners": "^0.13.8",
     "react-youtube": "^10.1.0",
     "read-more-react": "^1.0.10",
     "tabler-icons-react": "^1.56.0"

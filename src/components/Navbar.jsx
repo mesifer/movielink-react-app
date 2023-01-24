@@ -1,10 +1,24 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu2, Search, BrandGithub } from 'tabler-icons-react';
+import '../../public/css/slider.css';
+import DatalistInput, { useComboboxControls } from 'react-datalist-input';
+import { useEffect } from 'react';
+import tmdb from './tmdb';
+import axios from 'axios';
+const imgURL = `https://image.tmdb.org/t/p/w500`;
+
 export default function Navbar() {
+    let navigate = useNavigate();
+
     const [color, setColor] = useState(false);
     const [isSearch, setIsSearch] = useState(false);
     const [isMenu, setIsMenu] = useState(false);
+    const [isData, setIsData] = useState(false);
+    const [data, setData] = useState([]);
+    const [loading, setIsLoading] = useState(false);
+    const [query, setQuery] = useState('');
+
     const changeColor = () => {
         window.scrollY >= 50 ? setColor(true) : setColor(false);
     };
@@ -15,9 +29,45 @@ export default function Navbar() {
     const searchToggle = () => {
         setIsSearch(!isSearch);
     };
+    const renderData = (event) => {
+        event.target.value ? setIsData(true) : setIsData(false);
+        let txt = event.target.value;
+        setQuery(txt);
+    };
+    const routeChange = (id, media) => {
+        let path = `/${media}/${id}`;
+        navigate(path);
+        setIsData(false);
+    };
+    const fetchData = axios.create({
+        baseURL: 'https://api.themoviedb.org/3',
+        headers: {
+            Accept: 'application/json',
+        },
+        params: {
+            api_key: '1887f10c3d2cd8bb12897cba9c071f32',
+            language: 'en-ID',
+            append_to_response: 'videos',
+            query: query,
+        },
+    });
+
+    useEffect(() => {
+        setIsLoading(true);
+        const getData = async () => {
+            try {
+                const { data } = await fetchData.get(`/search/multi`);
+                setData(data.results);
+                setIsLoading(false);
+            } catch (error) {
+                setIsLoading(false);
+            }
+        };
+        if (query) getData();
+        console.log(data);
+    }, [query]);
 
     window.addEventListener('scroll', changeColor);
-
     return (
         <nav
             className={
@@ -26,7 +76,7 @@ export default function Navbar() {
                     : 'duration-300 Navbar fixed lg:px-4 px-4 z-50 py-8 text-white w-full'
             }
         >
-            <div className="flex md:gap-x-20 min-[1440px]:gap-x-32 lg:gap-x-12  justify-between lg:px-12 min-[320px]:px-4">
+            <div className="flex md:gap-x-24 min-[1440px]:gap-x-32 lg:gap-x-12  justify-between lg:px-12 min-[320px]:px-4">
                 <div className="md:flex justify-center items-center">
                     <Link className="text-2xl font-medium">Movielink</Link>
                 </div>
@@ -42,13 +92,18 @@ export default function Navbar() {
                                     : 'mb-4 hidden justify-between flex-row  bg-white/50 w-full rounded-md'
                             }
                         >
-                            <input
-                                className="w-5/6 px-8 py-2 bg-transparent placeholder:text-slate-800 text-slate-800 md:flex  outline-0 md:w-[40vh]"
-                                placeholder="search movies"
-                                type="text"
-                                name=""
-                                id=""
-                            />
+                            <div className="">
+                                <input
+                                    className="w-5/6 px-8 py-2 bg-transparent placeholder:text-slate-800 text-slate-800 md:flex  outline-0 md:w-[40vh]"
+                                    placeholder="search movies"
+                                    type="text"
+                                    name=""
+                                    id=""
+                                    onChange={renderData}
+                                    value={query}
+                                />
+                            </div>
+
                             <div className="w-1/6 bg-green-700 items-center flex justify-center rounded-r-md">
                                 <Search size={24} color="white"></Search>
                             </div>
@@ -96,13 +151,70 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div className="Searchbar flex items-center md:justify-between md:gap-x-2 rounded-xl md:py-2 md:px-8 md:bg-[#ffffff13] min-[320px]:pl-[60%]">
-                        <input
-                            className="bg-transparent md:flex hidden outline-0 md:w-[40vh]"
-                            placeholder="search movies"
-                            type="text"
-                            name=""
-                            id=""
-                        />
+                        <div className="search">
+                            <input
+                                className="bg-transparent md:flex hidden outline-0 md:w-[40vh]"
+                                list="data"
+                                placeholder="search movies"
+                                type="text"
+                                onChange={renderData}
+                                value={query}
+                            />
+                            {isData ? (
+                                <div className="bg-black/90 min-[1400px]:w-[20.5%] lg:w-[35%] md:w-[38%] md:mt-[1.5vh] md:flex md:left-auto mt-[18vh] left-1 w-[98%] flex-col  absolute rounded-md ">
+                                    {!loading ? (
+                                        data.length != 0 ? (
+                                            <div className="">
+                                                <div className="overflow-y-auto md:max-h-[70vh] max-h-[50vh] ">
+                                                    {data.map((movie, index) => {
+                                                        return movie.media_type != 'person' ? (
+                                                            <div
+                                                                key={index}
+                                                                className="flex rounded-md hover:bg-white/20 py-4 px-4"
+                                                                onClick={() => {
+                                                                    routeChange(movie.id, movie.media_type);
+                                                                }}
+                                                            >
+                                                                <div
+                                                                    className="w-[20%] h-[12vh] bg-cover bg-center bg-contain bg-no-repeat"
+                                                                    style={{ backgroundImage: `url(${imgURL}/${movie.poster_path})` }}
+                                                                ></div>
+                                                                <div className="p-4 w-[80%]   cursor-pointer">
+                                                                    <option className="truncate" value="">
+                                                                        {movie.title ? movie.title : movie.name}
+                                                                    </option>
+                                                                    <span className="text-white/50 uppercase text-xs">{movie.media_type}</span>
+                                                                </div>
+                                                            </div>
+                                                        ) : index === data.length - 1 ? (
+                                                            <div className="p-4 text-white/50">Data not found</div>
+                                                        ) : null;
+                                                    })}
+                                                </div>
+                                                <div className="p-4 lg:hidden">
+                                                    <button
+                                                        onClick={() => {
+                                                            setIsData(false);
+                                                            setIsSearch(false);
+                                                            setQuery('');
+                                                        }}
+                                                        className="bg-green-700 text-center w-full py-1 rounded-md"
+                                                    >
+                                                        close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        ) : (
+                                            <div className="p-4 text-white/50">Data not found</div>
+                                        )
+                                    ) : (
+                                        <div className="">
+                                            <div className="px-4 rounded-t-md text-white/50 py-4">loading...</div>
+                                        </div>
+                                    )}
+                                </div>
+                            ) : null}
+                        </div>
                         <Search size={24} onClick={searchToggle} color="white"></Search>
                     </div>
                     <a

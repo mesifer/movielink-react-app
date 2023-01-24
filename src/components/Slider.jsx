@@ -9,6 +9,8 @@ export default function Slider() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [slide, setSlide] = useState([]);
     const [popular, setPopular] = useState([]);
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
         const fetchMovies = async () => {
             const dataPopular = await tmdb.get('trending/movie/week').then();

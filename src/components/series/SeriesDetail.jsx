@@ -5,6 +5,7 @@ import VideoIframe from '../iFrame';
 import Navbar from '../Navbar';
 import Footer from '../Footer';
 import ReviewSeries from './ReviewSeries';
+import { PuffLoader } from 'react-spinners';
 const imgURL = 'https://image.tmdb.org/t/p/w1280';
 
 export default function SeriesDetail() {
@@ -61,7 +62,13 @@ export default function SeriesDetail() {
                         >
                             <div className="layer bg-[#0f172a98] w-full h-full flex justify-center items-center lg:pt-20">
                                 <div className="w-[95%]">
-                                    <VideoIframe videoId={trailer.key} videoTitle={trailer.name} />
+                                    {trailer ? (
+                                        <VideoIframe videoId={trailer.key} videoTitle={trailer.name} />
+                                    ) : (
+                                        <div className="w-full lg:h-[80vh] md:h-[60vh] h-[50vh] bg-black/50 text-white/50 text-center flex justify-center items-center text-3xl">
+                                            Video Not Found
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
@@ -151,7 +158,9 @@ export default function SeriesDetail() {
                     <Footer />
                 </div>
             ) : (
-                <div className="place-content-center text-white grid w-full h-screen">Loading...</div>
+                <div className="place-content-center text-white grid w-full h-screen">
+                    <PuffLoader size={150} color={'#15803D'} />
+                </div>
             )}
         </div>
     );

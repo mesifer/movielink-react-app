@@ -5,6 +5,8 @@ import VideoIframe from '../iFrame';
 import Navbar from '../Navbar';
 import ReviewMovies from './ReviewMovies';
 import Footer from '../Footer';
+import PuffLoader from 'react-spinners/PuffLoader';
+
 const imgURL = 'https://image.tmdb.org/t/p/w1280';
 
 export default function MovieDetail() {
@@ -175,7 +177,9 @@ export default function MovieDetail() {
                     <Footer />
                 </div>
             ) : (
-                <div className="place-content-center text-white grid w-full h-screen">Loading...</div>
+                <div className="place-content-center text-white grid w-full h-screen">
+                    <PuffLoader size={150} color={'#15803D'} />
+                </div>
             )}
         </div>
     );
