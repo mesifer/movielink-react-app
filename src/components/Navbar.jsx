@@ -37,6 +37,7 @@ export default function Navbar() {
     const routeChange = (id, media) => {
         let path = `/${media}/${id}`;
         navigate(path);
+        setIsSearch(false);
         setIsData(false);
     };
     const fetchData = axios.create({
